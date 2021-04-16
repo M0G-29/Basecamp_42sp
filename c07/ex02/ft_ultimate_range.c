@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 19:23:27 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/04/16 17:38:39 by lpaulo-d         ###   ########.fr       */
+/*   Created: 2021/04/16 01:44:45 by lpaulo-d          #+#    #+#             */
+/*   Updated: 2021/04/16 20:39:03 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_iterative_power(int nb, int power)
-{
-	int result;
+#include <stdlib.h>
 
-	result = 1;
-	if (power < 0)
-		return (0);
-	if (power == 0)
-		return (1);
-	while (power-- > 0)
+int		ft_ultimate_range(int **range, int min, int max)
+{
+	int		i;
+	int		len;
+
+	len = max - min;
+	if (min >= max)
 	{
-		result = nb * result;
-		power--;
+		*range = 0;
+		return (0);
 	}
-	return (result);
+	if (!(*range = (int *)malloc(sizeof(int) * len)))
+		return (-1);
+	i = 0;
+	while (min < max)
+	{
+		(*range)[i] = min;
+		min++;
+		i++;
+	}
+	return (len);
 }

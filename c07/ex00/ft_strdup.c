@@ -1,28 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 19:23:27 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/04/16 17:38:39 by lpaulo-d         ###   ########.fr       */
+/*   Created: 2021/04/16 00:40:49 by lpaulo-d          #+#    #+#             */
+/*   Updated: 2021/04/16 20:22:38 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_iterative_power(int nb, int power)
-{
-	int result;
+#include <stdlib.h>
 
-	result = 1;
-	if (power < 0)
+int		lengh(char *x)
+{
+	int		i;
+
+	i = 0;
+	while (x[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*dup;
+	int		size;
+	int		i;
+
+	i = 0;
+	size = lengh(src);
+	dup = malloc(size * sizeof(char) + 1);
+	if (dup == NULL)
 		return (0);
-	if (power == 0)
-		return (1);
-	while (power-- > 0)
+	else
 	{
-		result = nb * result;
-		power--;
+		while (src[i] != '\0')
+		{
+			dup[i] = src[i];
+			i++;
+		}
+		dup[i] = '\0';
+		return (dup);
 	}
-	return (result);
 }

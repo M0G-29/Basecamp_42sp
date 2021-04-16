@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 19:23:27 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/04/16 17:38:39 by lpaulo-d         ###   ########.fr       */
+/*   Created: 2021/04/16 00:55:01 by lpaulo-d          #+#    #+#             */
+/*   Updated: 2021/04/16 20:26:28 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_iterative_power(int nb, int power)
-{
-	int result;
+#include <stdlib.h>
 
-	result = 1;
-	if (power < 0)
+int		*ft_range(int min, int max)
+{
+	int		i;
+	int		size;
+	int		*array;
+
+	i = 0;
+	size = max - min;
+	array = malloc(size * sizeof(int));
+	if (size <= 0)
 		return (0);
-	if (power == 0)
-		return (1);
-	while (power-- > 0)
+	if (array == NULL)
+		return (0);
+	else
 	{
-		result = nb * result;
-		power--;
+		while (i < size)
+		{
+			array[i] = min;
+			min++;
+			i++;
+		}
 	}
-	return (result);
+	return (array);
 }
